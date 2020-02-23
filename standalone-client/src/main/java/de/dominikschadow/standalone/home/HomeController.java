@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Dominik Schadow, dominikschadow@gmail.com
+ * Copyright (C) 2020 Dominik Schadow, dominikschadow@gmail.com
  *
  * This file is part of the Cloud Security project.
  *
@@ -15,30 +15,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.dominikschadow.standalone.info;
+package de.dominikschadow.standalone.home;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
- * REST controller to return basic application information.
+ * Controller to return the public home page of the application.
  *
  * @author Dominik Schadow
  */
-@RestController
-public class AboutController {
-    @Value("${spring.application.name}")
-    private String applicationName;
+@Controller
+public class HomeController {
+    @Value("${client.encrypted-database-password}")
+    private String encryptedDatasourcePassword;
 
     /**
      * Returns a greeting containing the applications name.
      *
      * @return The greeting
      */
-    @GetMapping(value = "/", produces = MediaType.TEXT_PLAIN_VALUE)
-    public String about() {
-        return "Hello from " + applicationName;
+    @GetMapping(value = "/")
+    public String home(final Model model) {
+        model.addAttribute("encryptedDatasourcePassword", encryptedDatasourcePassword);
+
+        return "index";
     }
 }

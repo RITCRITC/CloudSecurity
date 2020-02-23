@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Dominik Schadow, dominikschadow@gmail.com
+ * Copyright (C) 2020 Dominik Schadow, dominikschadow@gmail.com
  *
  * This file is part of the Cloud Security project.
  *
@@ -17,13 +17,14 @@
  */
 package de.dominikschadow.standalone.credential;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  * Credential entity.
@@ -31,14 +32,14 @@ import javax.persistence.Table;
  * @author Dominik Schadow
  */
 @Entity
-@Table
-@Getter
-@Setter
+@Data
+@RequiredArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class Credential {
     @Id
     @GeneratedValue
-    private Long id;
-    private Long userId;
-    private String username;
-    private String password;
+    private final Long id;
+    private final Long userId;
+    private final String username;
+    private final String password;
 }

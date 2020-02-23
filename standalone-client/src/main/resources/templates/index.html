@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="partials :: head"></head>
+<body>
+
+<div class="container" id="main">
+    <div class="row" id="welcome">
+        <div class="col-12">
+            <div class="well">
+                <div class="page-header">
+                    <h1>Cloud Security
+                        <small>Standalone Client using Jasypt to protect sensitive data</small>
+                    </h1>
+
+                    <p class="lead">
+                        The encrypted datasource password is <span style="font-weight: bold" th:text="${encryptedDatasourcePassword}"></span>. You have to <a th:href="@{/login}">login</a> in order to see the decrypted password.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="partials :: scripts"></div>
+</body>
+</html>

@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.dominikschadow.standalone.info;
+package de.dominikschadow.standalone.home;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,13 +27,13 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 /**
- * Tests the {@link AboutController} class.
+ * Tests the {@link HomeController} class.
  *
  * @author Dominik Schadow
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(AboutController.class)
-public class AboutControllerTest {
+@WebMvcTest(HomeController.class)
+public class HomeControllerTest {
     @Autowired
     private MockMvc mvc;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Dominik Schadow, dominikschadow@gmail.com
+ * Copyright (C) 2020 Dominik Schadow, dominikschadow@gmail.com
  *
  * This file is part of the Cloud Security project.
  *
@@ -18,8 +18,10 @@
 package de.dominikschadow.standalone.user;
 
 import de.dominikschadow.standalone.credential.Credential;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -30,16 +32,16 @@ import java.util.Set;
  * @author Dominik Schadow
  */
 @Entity
-@Table
-@Getter
-@Setter
+@Data
+@RequiredArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class User {
     @Id
     @GeneratedValue
-    private Long id;
-    private String firstname;
-    private String lastname;
+    private final Long id;
+    private final String firstname;
+    private final String lastname;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
-    private Set<Credential> credentials;
+    private final Set<Credential> credentials;
 }
